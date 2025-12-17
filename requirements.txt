@@ -1,0 +1,5 @@
+pandas
+binance-connector
+yfinance
+dotenv
+ta
