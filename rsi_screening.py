@@ -101,16 +101,20 @@ def main():
     else:
         html = f"Nenhuma oportunidade de RSI <= 30 encontrada para tipo: {tipo}"
 
-    smtp.send_ssl_email(
-        os.getenv("MAIL_SMTP"),
-        os.getenv("MAIL_PORT"),
-        os.getenv("MAIL_USER"),
-        os.getenv("MAIL_PASS"),
-        os.getenv("MAIL_SENDER"),
-        'raftomazini@gmail.com',
-        titulo,
-        html
-    )
+    destinations = os.getenv("MAIL_RECEIVER").split(',')
+
+    for destination in destinations:
+        smtp.send_ssl_email(
+            os.getenv("MAIL_SMTP"),
+            os.getenv("MAIL_PORT"),
+            os.getenv("MAIL_USER"),
+            os.getenv("MAIL_PASS"),
+            os.getenv("MAIL_SENDER"),
+            destination,
+            titulo,
+            html
+        )
+
     print(f"\n✅ Relatório enviado: {titulo}")
 
 if __name__ == "__main__":

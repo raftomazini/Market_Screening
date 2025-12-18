@@ -1,5 +1,5 @@
-# RSI - Crypto (todos os dias às 21:00)
-00 21 * * * cd /app && /usr/local/bin/python rsi_screening.py crypto
+# RSI - Crypto (todos os dias às 21:00 BR)
+00 00 * * * /app/rsi_screening.sh crypto
 
-# RSI - Ações/ETF (seg-sex às 20:00)
-0 20 * * 1-5 cd /app && /usr/local/bin/python rsi_screening.py acoes
+# RSI - Ações/ETF (seg-sex às 20:30 BR)
+00 23 * * 1-5 /app/rsi_screening.sh acoes

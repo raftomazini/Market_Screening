@@ -1,0 +1,7 @@
+# gerar a imagem
+docker build -t rsi-screening:v1.0.1 .
+
+# Enviar imagem para o docker hub
+docker login
+docker tag rsi-screening:v1.0.1 rtomazini/rsi-screening:v1.0.1
+docker push rtomazini/rsi-screening:v1.0.1

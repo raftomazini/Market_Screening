@@ -17,6 +17,7 @@ WORKDIR /app
 # Copia arquivos
 COPY requirements.txt .
 COPY rsi_screening.py .
+COPY rsi_screening.sh .
 COPY lib/ ./lib/
 COPY crontab /etc/crontabs/root
 
@@ -25,6 +26,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Ajusta permissões do cron
 RUN chmod 0644 /etc/crontabs/root
+
+# Ajusta a permissão do rsi_screening.sh
+RUN chmod 0755 /app/rsi_screening.sh
 
 # Arquivo de log do cron
 RUN touch /var/log/cron.log
