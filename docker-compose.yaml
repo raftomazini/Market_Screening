@@ -1,0 +1,10 @@
+services:
+  pgsql:
+    image: rtomazini/rsi-screening:v1.0.1
+    container_name: rsi
+    restart: unless-stopped
+    volumes:
+        - "C:/docker/rsi/.env:/app/.env"
+        - "C:/docker/rsi/tickers:/app/tickers"
+        - "C:/docker/rsi/crontab:/etc/crontabs/root"
+
