@@ -24,7 +24,7 @@ def calcular_rsi(close_series, janela=rsi_janela):
     return rsi.iloc[-1] if not pd.isna(rsi.iloc[-1]) else None
 
 # === 1. AÇÕES/ETFS (YFinance apenas) ===
-def processar_acoes(filepath='tickers/br_tickers.txt'):
+def processar_acoes(filepath='tickers/tickers.txt'):
     oportunidades = []
     with open(filepath, 'r', encoding='utf-8') as f:
         tickers = [line.strip() for line in f if line.strip()]
@@ -73,7 +73,7 @@ def processar_crypto(filepath='tickers/crypto_tickers.txt'):
         print(df)
         print(rsi)
         if rsi is not None and rsi <= 30:
-            oportunidades.append({"Ticker": pair, "Close": round(close.iloc[-1], 2), "RSI": round(rsi, 2)})
+            oportunidades.append({"Ticker": pair, "Close": round(close.iloc[-1], 6), "RSI": round(rsi, 2)})
 
     return oportunidades
 
